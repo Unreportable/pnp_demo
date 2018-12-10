@@ -11,6 +11,8 @@ init:
   - ps: Update-AppveyorBuild -Version "$($env:APPVEYOR_REPO_BRANCH) - $($env:APPVEYOR_REPO_COMMIT)"
 
 install:
+  - cmd: ECHO "INSTALL OPENCV:"
+  - cmd: choco install OpenCV
   - git submodule update --init --recursive
 
 # Win32 and x64 are CMake-compatible solution platform names.
