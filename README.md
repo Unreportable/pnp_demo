@@ -1,3 +1,5 @@
+https://travis-ci.org/Unreportable/pnp_demo.svg?branch=master
+
 # Google Summer of Code 2014 - OpenCV - PnP Demo
 
 Some explanations of the project: [Real Time Pose Estimation Tutorial and DLS implementation](http://www.google-melange.com/gsoc/project/details/google/gsoc2014/edgarriba/5757334940811264).
