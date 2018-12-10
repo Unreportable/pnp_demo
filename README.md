@@ -1,4 +1,4 @@
-https://travis-ci.org/Unreportable/pnp_demo.svg?branch=master
+[![Build Status](https://travis-ci.org/Unreportable/pnp_demo.svg?branch=master)](https://travis-ci.org/Unreportable/pnp_demo)
 
 # Google Summer of Code 2014 - OpenCV - PnP Demo
 
