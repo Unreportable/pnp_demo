@@ -1,50 +1,30 @@
-# version string format -- This will be overwritten later anyway
 version: "{build}"
 
 os:
-  - Visual Studio 2017
   - Visual Studio 2015
 
 init:
   - git config --global core.autocrlf input
-  # Set build version to git commit-hash
   - ps: Update-AppveyorBuild -Version "$($env:APPVEYOR_REPO_BRANCH) - $($env:APPVEYOR_REPO_COMMIT)"
 
 install:
   - cmd: ECHO "INSTALL OPENCV:"
   - choco upgrade chocolatey
-  - choco install opencv -y
-  - git submodule update --init --recursive
+  - choco install opencv
 
-# Win32 and x64 are CMake-compatible solution platform names.
-# This allows us to pass %PLATFORM% to CMake -A.
 platform:
-  - Win32
   - x64
 
-# build Configurations, i.e. Debug, Release, etc.
-configuration:
-  - Debug
-  - Release
-
-#Cmake will autodetect the compiler, but we set the arch
-before_build:
- #  - cmd: IF EXIST C:\OpenCV* CD C:\OpenCV*
-#  - cmd: SET OPENCV_ROOT_PATH=%CD%\opencv
-#  - cmd: CD %APP_PATH%
- # - cmd: SET OPENCV_DIR=%OPENCV_ROOT_PATH%\build\%ARCH%\vc12\bin
- # - cmd: DIR %OPENCV_ROOT_PATH%\build\%ARCH%\vc12\bin
- # - cmd: DIR %OPENCV_ROOT_PATH%\build\%ARCH%\vc12\lib
-  # Here we need to copy the opencv.pc file from the repo into PKG_CONFIG_PATH
-  # trick part is to check for the vc12 folder and use that one
- # - cmd: copy .\utils\opencv_x64.pc C:\GTK\lib\pkgconfig\opencv.pc
+before_build: 
+  - cmd: IF EXIST c:\tools\opencv* CD c:\tools\opencv*
+  - cmd: SET OPENCV_DIR=%CD%\build
+  - cmd: echo Running cmake...
+  - cmd: cd C:\projects\pnp-demo
   - cmake -H. -BBuild -A%PLATFORM%
 
-# build with MSBuild
 build:
-  project: Build\pnp_demo.sln        # path to Visual Studio solution or project
-  parallel: true                        # enable MSBuild parallel builds
-  verbosity: normal                     # MSBuild verbosity level {quiet|minimal|normal|detailed}
-
+  project: Build\pnp_demo.sln       
+  parallel: true                     
+  verbosity: normal                    
 test_script:
   - cd Build
