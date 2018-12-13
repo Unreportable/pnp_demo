@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/Unreportable/pnp_demo.svg?branch=master)](https://travis-ci.org/Unreportable/pnp_demo)
-[![Build status](https://ci.appveyor.com/api/projects/status/ow7au08dv..)](https://ci.appveyor.com/project/Unreportable/pnp-demo)
+[![Build status](https://ci.appveyor.com/api/projects/status/ow7au08dv1u17wfq?svg=true)](https://ci.appveyor.com/project/Unreportable/pnp-demo)
 
 # Google Summer of Code 2014 - OpenCV - PnP Demo
 
